@@ -1,0 +1,2 @@
+# Oceanic-Carnage
+Deep under the water lives hundreds of thousands different species of aquatic life. Human expansion has lead to several threats to this kind of wildlife. These threats include problems such as plastic pollution, oil pollution, and overfishing. In this bullet hell game, you play as a fish and evade these threats. The fish will point towards your mouse. \nHold down your mouse button for the fish to move in the direction it is facing. Red will indicate that an attack will appear there. Avoid anything oil, plastic, and fishing rods.
