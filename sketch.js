@@ -19,6 +19,7 @@ function preload() {
   a = loadImage('assets/ranks/A.png')
   s = loadImage('assets/ranks/S.png')
   death = loadImage('assets/death.png')
+  menu.play();
 }
 
 function setup() {
@@ -95,7 +96,6 @@ function setup() {
       repeat5b();
     }
   });
-menu.play();
 }
 
 
