@@ -23,7 +23,6 @@ function preload() {
 
 function setup() {
   survive = 0;
-  menu.play();
   createCanvas(600, 400);
   player = new Person();
   bad = [];
@@ -96,6 +95,7 @@ function setup() {
       repeat5b();
     }
   });
+menu.play();
 }
 
 
