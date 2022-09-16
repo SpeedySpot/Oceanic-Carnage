@@ -1,50 +1,52 @@
+var timeouts = [];
 function game() {
-  setTimeout(game0, 25500);
+  
+  timeouts.push(setTimeout(game0, 25500));
   //setTimeout(win, 4000);
   for (i = 0; i < 5; i++) {
-    setTimeout(game1a, 28000 + 2000 * i);
-    setTimeout(game1b, 29000 + 2000 * i);
+    timeouts.push(setTimeout(game1a, 28000 + 2000 * i));
+    timeouts.push(setTimeout(game1b, 29000 + 2000 * i));
   }
-  setTimeout(game2, 39000);
+  timeouts.push(setTimeout(game2, 39000));
   for (i = 0; i < 5; i++) {
-    setTimeout(game3, 43000 + i * 300);
+    timeouts.push(setTimeout(game3, 43000 + i * 300));
   }
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4.bind(null, i), 47000 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4.bind(null, i), 47000 + i * 100))));
   }
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4b.bind(null, i), 48000 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4b.bind(null, i), 48000 + i * 100))));
   }
 
-  setTimeout(setTimeout(game5.bind(null, 0, 50, 600, 100), 64000));
-  setTimeout(setTimeout(game5.bind(null, 0, 250, 600, 100), 64300));
-  setTimeout(setTimeout(game5.bind(null, 100, 0, 100, 400), 64600));
-  setTimeout(setTimeout(game5.bind(null, 400, 0, 100, 400), 64900));
-  setTimeout(game5b, 65200);
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 0, 50, 600, 100), 64000))));
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 0, 250, 600, 100), 64300))));
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 100, 0, 100, 400), 64600))));
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 400, 0, 100, 400), 64900))));
+  timeouts.push(setTimeout(game5b, 65200));
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4.bind(null, i), 79000 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4.bind(null, i), 79000 + i * 100))));
   }
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4b.bind(null, i), 80000 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4b.bind(null, i), 80000 + i * 100))));
   }
   for (i = 0; i < 4; i++) {
-    setTimeout(game3, 110500 + i * 400);
+    timeouts.push(setTimeout(game3, 110500 + i * 400));
   }
   for (i = 0; i < 8; i++) {
-    setTimeout(game3, 112000 + i * 200);
+    timeouts.push(setTimeout(game3, 112000 + i * 200));
   }
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4.bind(null, i), 132500 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4.bind(null, i), 132500 + i * 100))));
   }
   for (i = 0; i < 9; i++) {
-    setTimeout(setTimeout(game4b.bind(null, i), 133500 + i * 100));
+    timeouts.push(setTimeout(timeouts.push(setTimeout(game4b.bind(null, i), 133500 + i * 100))));
   }
-  setTimeout(setTimeout(game5.bind(null, 0, 0, 600, 100), 122500));
-  setTimeout(setTimeout(game5.bind(null, 0, 150, 600, 100), 123000));
-  setTimeout(setTimeout(game5.bind(null, 0, 300, 600, 100), 123500));
-  setTimeout(game6, 124000);
-  setTimeout(game6, 124200);
-  setTimeout(win, 126000);
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 0, 0, 600, 100), 122500))));
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 0, 150, 600, 100), 123000))));
+  timeouts.push(setTimeout(timeouts.push(setTimeout(game5.bind(null, 0, 300, 600, 100), 123500))));
+  timeouts.push(setTimeout(game6, 124000));
+  timeouts.push(setTimeout(game6, 124200));
+  timeouts.push(setTimeout(win, 126000));
 }
 
 function repeat0() {
@@ -499,3 +501,20 @@ function game6() {
     id: 3
   }))
 */
+function win() {
+  scene = 3;
+  song.stop();
+  for (var i=0; i<timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+  victory.play();
+}
+function lose() {
+  scene = 4;
+  survive = round(millis() - startOffset)/1000;
+  song.stop();
+  for (var i=0; i<timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+  gameover.play();
+}
